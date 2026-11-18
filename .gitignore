@@ -1,0 +1,23 @@
+# OS & Editor metadata
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Temporary build, dependency & test artifacts inside exercises/
+**/node_modules/
+**/__pycache__/
+**/.pytest_cache/
+**/.mypy_cache/
+**/.ruff_cache/
+**/venv/
+**/.venv/
+**/target/
+**/build/
+**/dist/
+**/bin/
+**/obj/
+**/*.class
+**/*.pyc
+**/*.exe
+**/*.out
