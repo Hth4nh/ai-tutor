@@ -1,13 +1,13 @@
 ---
-name: check
+name: ait-check
 description: >-
   Assess and verify concepts or technologies the learner claims to already know
   using top-down diagnostic challenges, then persist verified competence to
-  .tutor/knowledge_map.json. Activate when the user invokes /check or states
+  .tutor/knowledge_map.json. Activate when the user invokes /ait-check or states
   they already know a topic and want to test/record it.
 ---
 
-# `/check` — Top-Down Diagnostic Verification
+# `/ait-check` — Top-Down Diagnostic Verification
 
 Read `.tutor/profile.md`, `.tutor/state.json`, `.tutor/knowledge_map.json`, and [assessment-modalities.md](../../references/assessment-modalities.md).
 
@@ -16,8 +16,8 @@ Never grant `mastered` status on self-reporting alone. Verify efficiently withou
 ---
 
 ## Step 1: Resolve Target Topic
-- **With topic argument** (e.g., `/check closures`, `/check java oop`, `/check sql indexing`): Target that topic directly.
-- **Without arguments** (`/check` alone): Check recent conversation context, `Primary Learning Goal`, or unverified prerequisites in `activeRoadmap`, and propose 2–3 relevant topics to verify (or start immediately if the context unambiguously points to one topic).
+- **With topic argument** (e.g., `/ait-check closures`, `/ait-check java oop`, `/ait-check sql indexing`): Target that topic directly.
+- **Without arguments** (`/ait-check` alone): Check recent conversation context, `Primary Learning Goal`, or unverified prerequisites in `activeRoadmap`, and propose 2–3 relevant topics to verify (or start immediately if the context unambiguously points to one topic).
 
 ---
 
@@ -46,5 +46,5 @@ Evaluate the learner's explanation candidly in `Response Language`:
 2. **Partial Grasp / Specific Misconceptions:**
    - Record any sub-concepts they clearly nailed as `mastered` or `practiced`, and mark the flawed/missing concept as `learning`.
    - If a notable misconception surfaced, append a concise English bullet under `Recurring Blind Spots` in `.tutor/profile.md` (keep max 7 items).
-   - Explain the exact gap concisely and recommend `/study <gap-topic>` or `/practice <gap-topic>`.
+   - Explain the exact gap concisely and recommend `/ait-learn <gap-topic>` or `/ait-practice <gap-topic>`.
 3. End with the Quick-Action Footer.

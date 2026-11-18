@@ -44,7 +44,7 @@ function buildSessionMessage(tutorDir) {
       '[AI Tutor Session Context]',
       'Status: Learner is NOT onboarded yet (.tutor/state.json -> onboarded: false).',
       `Response Language: ${responseLang} (if Auto, mirror the language of the learner's message).`,
-      'Action: If the learner greets you or asks where to start, welcome them concisely and suggest running `/profile` to configure preferences and goals. If they already invoked a specific command, honor it directly.'
+      'Action: If the learner greets you or asks where to start, welcome them concisely and suggest running `/ait-config` to configure preferences and goals. If they already invoked a specific command, honor it directly.'
     ].join('\n');
   }
 
@@ -76,7 +76,7 @@ function buildSessionMessage(tutorDir) {
     `Response Language: ${responseLang} | Default Coding Language: ${defaultCodingLang} | Difficulty: ${difficulty}`,
     `Primary Goal: ${goal}`,
     `Active Roadmap: ${state.activeRoadmap || 'None'} | Current Concept: ${state.currentConceptId || 'None'}`,
-    `Knowledge Summary: ${masteredCount} mastered, ${learningCount} in-progress, ${dueReviews.length} due for /review${dueReviews.length > 0 ? ` (${dueReviews.slice(0, 4).join(', ')})` : ''}.`
+    `Knowledge Summary: ${masteredCount} mastered, ${learningCount} in-progress, ${dueReviews.length} due for /ait-review${dueReviews.length > 0 ? ` (${dueReviews.slice(0, 4).join(', ')})` : ''}.`
   ];
 
   if (state.activeExercise && state.activeExercise.directory) {

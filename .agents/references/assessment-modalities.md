@@ -1,6 +1,6 @@
 # Open-Domain Assessment Modalities & Knowledge Graph Schema
 
-This reference governs how any Computer Science or Software Engineering topic is modeled in `.tutor/knowledge_map.json`, practiced in `/practice`, and evaluated in `/check` and `/submit`.
+This reference governs how any Computer Science or Software Engineering topic is modeled in `.tutor/knowledge_map.json`, practiced in `/ait-practice`, and evaluated in `/ait-check` and `/ait-submit`.
 
 ---
 
@@ -47,59 +47,59 @@ Do not restrict topics to fixed academic subjects. Instead, select the modality 
 
 ### Modality 1: `implementation` (Build & Verify)
 - **Best For:** Building algorithms, data structures, language features, queries, APIs, parsers, CLI scripts, or configurations from a specification.
-- **`/practice` Setup:**
+- **`/ait-practice` Setup:**
   - Clear problem specification & constraints in `README.md` (written in `Response Language`).
   - Minimal starter stub + runnable automated test suite in English covering normal cases, boundary/empty inputs, and scale/constraint checks.
   - Verify before handoff that the test runner executes cleanly and fails as expected on the unimplemented stub.
-- **`/submit` Mastery Criteria:**
+- **`/ait-submit` Mastery Criteria:**
   - 100% automated tests pass.
   - Meets target algorithmic/resource constraints (e.g., if `O(n)` time is required and learner passes small tests with `O(n^2)` brute force, award at most `practiced`, never `mastered`).
   - Idiomatic, readable structure in the target language.
 
 ### Modality 2: `refactoring` (Critique & Transform)
 - **Best For:** Improving code quality, modularity, extensibility, performance, or security on an already-working artifact (e.g., Clean Code, SOLID, Design Patterns, query optimization, patching security flaws).
-- **`/practice` Setup:**
+- **`/ait-practice` Setup:**
   - Plant 4–6 realistic flaws (code smells, tight coupling, magic values, deep nesting, N+1 queries, or vulnerabilities) inside **working code backed by an already-passing (`GREEN`) test suite**.
   - Verify before handoff that `testCommand` currently passes 100% on the smelly starter code.
-- **`/submit` Mastery Criteria:**
+- **`/ait-submit` Mastery Criteria:**
   - Existing regression tests remain 100% green (plus any new behavior tests if extensibility was requested).
   - Target flaws are eliminated cleanly **without over-engineering** or needless abstraction layers.
 
 ### Modality 3: `debugging` (Diagnose & Fix)
 - **Best For:** Under-the-hood runtime mechanics where passive reading creates false confidence (e.g., async/event loop ordering, race conditions, deadlocks, closure capture bugs, memory/reference mutation, floating-point or encoding edge cases).
-- **`/practice` Setup:**
+- **`/ait-practice` Setup:**
   - Reproducible buggy program + failing test or reproduction script demonstrating the subtle failure symptom.
-- **`/submit` Mastery Criteria:**
+- **`/ait-submit` Mastery Criteria:**
   - Bug is resolved cleanly and tests pass.
   - **Root-Cause Verification:** Learner must accurately state *why* the failure happened (either in a short note or 1 follow-up question) to prove deliberate engineering rather than trial-and-error guessing.
 
 ### Modality 4: `design` (Architect & Defend)
 - **Best For:** High-level modeling, system architecture, schema design, API contracts, or trade-off decisions—including topics **without executable unit tests** (e.g., System Design, Distributed Systems, Database Schema Modeling, Domain-Driven Design).
-- **`/practice` Setup:**
+- **`/ait-practice` Setup:**
   - Realistic scenario with explicit scale, consistency, latency, or business-evolution constraints in `README.md`.
   - Structured `DESIGN.md` template (or interface/schema skeleton) for components, data flow, failure modes, and trade-offs (`testCommand` may be `null` if purely architectural).
-- **`/submit` Mastery Criteria:**
+- **`/ait-submit` Mastery Criteria:**
   - Conduct an **Engineering Design Review**: evaluate requirement coverage, single points of failure, coupling, data integrity, and operational realism.
   - Pose 1 targeted stress-test / change-request question if a key trade-off is unaddressed before granting `mastered`.
 
-> **Dynamic Per-Exercise Rubric:** Regardless of topic, always define explicit **Acceptance Criteria** inside the exercise `README.md` at generation time so `/submit` evaluates against transparent, topic-specific engineering standards.
+> **Dynamic Per-Exercise Rubric:** Regardless of topic, always define explicit **Acceptance Criteria** inside the exercise `README.md` at generation time so `/ait-submit` evaluates against transparent, topic-specific engineering standards.
 
 ---
 
 ## 3. Mastery Thresholds & Spaced Repetition Schedule
 
-### Assigning Status on `/submit` or `/check`
+### Assigning Status on `/ait-submit` or `/ait-check`
 - **`mastered`** (`confidence: 0.85 - 1.0`):
-  - Passed `/check` with sharp top-down reasoning, OR passed `/submit` meeting all modality criteria with **`hintsUsed <= 1`**.
+  - Passed `/ait-check` with sharp top-down reasoning, OR passed `/ait-submit` meeting all modality criteria with **`hintsUsed <= 1`**.
   - Initial `reviewIntervalDays`: `7` (`nextReviewAt` = today + 7 days).
 - **`practiced`** (`confidence: 0.6 - 0.8`):
-  - Completed `/submit` functionally, but required **`hintsUsed >= 2`**, used a suboptimal approach, or needed significant help articulating root cause/trade-offs.
+  - Completed `/ait-submit` functionally, but required **`hintsUsed >= 2`**, used a suboptimal approach, or needed significant help articulating root cause/trade-offs.
   - Initial `reviewIntervalDays`: `3` (`nextReviewAt` = today + 3 days).
 - **`needs_review`** (`confidence: 0.3 - 0.5`):
-  - Failed recall during `/review` or exhibited regression on a prerequisite concept during a later lesson.
+  - Failed recall during `/ait-review` or exhibited regression on a prerequisite concept during a later lesson.
   - Reset `reviewIntervalDays`: `2`.
 
-### Interval Progression on `/review`
+### Interval Progression on `/ait-review`
 - **Strong recall:** Promote `practiced` / `needs_review` -> `mastered` (if solid), multiply `reviewIntervalDays` by ~2x (`3 -> 7 -> 14 -> 30 -> 60`), update `lastVerifiedAt` and `nextReviewAt`.
 - **Partial/hesitant recall:** Keep current status, set `reviewIntervalDays: 4`.
 - **Failed recall:** Set status to `needs_review`, set `reviewIntervalDays: 2`.

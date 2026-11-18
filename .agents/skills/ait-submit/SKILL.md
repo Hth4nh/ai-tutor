@@ -1,20 +1,20 @@
 ---
-name: submit
+name: ait-submit
 description: >-
   Run automated tests and conduct a rigorous engineering review of the learner's
   active exercise against its modality rubric, then persist verified 2-layer
   mastery and spaced-repetition schedule to .tutor/. Activate when the user
-  invokes /submit or asks to check, grade, or review their completed exercise.
+  invokes /ait-submit or asks to check, grade, or review their completed exercise.
 ---
 
-# `/submit` — Automated Verification, Code/Design Review & Dual-Save
+# `/ait-submit` — Automated Verification, Code/Design Review & Dual-Save
 
 Read `.tutor/state.json`, `.tutor/profile.md`, `.tutor/knowledge_map.json`, [assessment-modalities.md](../../references/assessment-modalities.md), and all files inside `activeExercise.directory`.
 
 ---
 
 ## Step 1: Validate & Execute Verification
-1. Check `activeExercise` in `.tutor/state.json`. If `null`, inform the learner (in `Response Language`) that there is no active exercise to submit and suggest `/practice`.
+1. Check `activeExercise` in `.tutor/state.json`. If `null`, inform the learner (in `Response Language`) that there is no active exercise to submit and suggest `/ait-practice`.
 2. If `activeExercise.testCommand` is non-null:
    - Execute `testCommand` inside `activeExercise.directory` using `run_command`.
    - Capture pass/fail counts and any error/assertion output.
@@ -27,14 +27,14 @@ Read `.tutor/state.json`, `.tutor/profile.md`, `.tutor/knowledge_map.json`, [ass
 ---
 
 ## Step 2A: If Submission Does NOT Meet Passing Standards Yet
-- **Keep `activeExercise` open** in `.tutor/state.json` so the learner can iterate and `/submit` again.
+- **Keep `activeExercise` open** in `.tutor/state.json` so the learner can iterate and `/ait-submit` again.
 - Respect the **Anti-Spoiler Lock**: Do **not** rewrite their code or dump the solution.
 - Provide specific, actionable Engineering Code Review feedback in `Response Language`:
   1. Test results summary (which case failed and what input/symptom triggered it).
   2. Structural, complexity, or design issues spotted.
   3. Focus area to fix next.
 - If the mistake reflects a recurring pattern, record/update a concise English bullet under `Recurring Blind Spots` in `.tutor/profile.md` (max 7 items).
-- End with the Quick-Action Footer (`/hint` · `/submit`).
+- End with the Quick-Action Footer (`/ait-hint` · `/ait-submit`).
 
 ---
 
@@ -58,4 +58,4 @@ Read `.tutor/state.json`, `.tutor/profile.md`, `.tutor/knowledge_map.json`, [ass
    - Set `"activeExercise": null`, update `"currentConceptId"` to the next roadmap concept (or `null` if roadmap is finished), and set `"lastUpdated"` to today.
 5. **Deliver Review in `Response Language`:**
    - State the verdict (`mastered` vs `practiced`), what was well-engineered in their code/design, and 1 concise polish tip (after passing, showing a brief idiomatic comparison snippet is allowed and encouraged!).
-   - End with the Quick-Action Footer (`/study` · `/roadmap` · `/profile`).
+   - End with the Quick-Action Footer (`/ait-learn` · `/ait-roadmap` · `/ait-status`).
