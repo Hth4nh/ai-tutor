@@ -1,0 +1,2 @@
+# Exclude all files from GitHub Linguist language statistics
+* linguist-vendored
