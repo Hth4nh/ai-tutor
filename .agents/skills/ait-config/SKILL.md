@@ -30,7 +30,7 @@ Trigger when the workspace has not been initialized yet.
 
 1. If the user has not answered onboarding questions yet:
    - Mirror the language of the user's message.
-   - Ask **4 brief, direct questions** in a single message (or via `ask_question` if helpful):
+   - Ask **4 brief, direct questions** in a single message (or via an interactive question tool if available):
      1. Preferred **Response Language** for chat & exercise prompts (defaulting to their current chat language).
      2. **Default Coding Language** for general software engineering exercises (when not studying a specific language).
      3. **Prior Background** (languages, paradigms, CS fundamentals they believe they already know—remind them these can be verified quickly via `/ait-check`).

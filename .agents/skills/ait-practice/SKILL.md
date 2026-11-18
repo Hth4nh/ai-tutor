@@ -48,7 +48,7 @@ Create directory `exercises/<YYYY-MM-DD>-<kebab-slug>/` containing:
 ---
 
 ## Step 3: Pre-Handoff Verification (Mandatory!)
-Before handing the lab to the learner, verify your generated test harness via terminal (`run_command`):
+Before handing the lab to the learner, verify your generated test harness by running the test command in the terminal:
 - For **`refactoring`:** Confirm `testCommand` runs and **passes (`GREEN`)** on the starter code right now.
 - For **`implementation` / `debugging`:** Confirm `testCommand` runs without syntax/import crashes and **fails cleanly** on the starter/buggy code (never hand over a broken test runner!).
 - Prefer zero-install standard-library test runners where possible (`node --test`, `python -m unittest` / `pytest`, `go test`, etc.) so labs start instantaneously.

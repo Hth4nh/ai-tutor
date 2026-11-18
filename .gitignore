@@ -1,8 +1,10 @@
-# OS & Editor metadata
+# OS, Editor & Local Agent Runtime metadata
 .DS_Store
 Thumbs.db
 .vscode/
 .idea/
+.gemini/*
+!.gemini/settings.json
 
 # Temporary build, dependency & test artifacts inside exercises/
 **/node_modules/

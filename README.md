@@ -1,6 +1,6 @@
 # AI Tutor Workspace
 
-An adaptive, open-domain Software Engineering & Computer Science tutor powered by Google Antigravity rules, skills, and lifecycle hooks.
+An adaptive, open-domain Software Engineering & Computer Science tutor built on the open **`AGENTS.md`** and **Agent Skills (`.agents/skills/`)** standards—working seamlessly across **Antigravity, Claude Code, Cursor, OpenAI Codex, GitHub Copilot, Gemini CLI, Windsurf, Cline, and Roo Code**.
 
 It tracks your verified competence across **two layers**—**Core Concepts** (paradigms, algorithms, design principles, system architecture) and **Technology Bindings** (language-specific syntax, runtime mechanics, and gotchas)—adapting roadmaps, lessons, and hands-on labs to what you already know.
 
@@ -40,9 +40,10 @@ All commands are grouped under the `/ait-` prefix (type `/ait` in chat to filter
 
 ```text
 .
-├── .agents/          # Internal agent skills, assessment modalities, and SessionStart hook
+├── .agents/          # Portable Agent Skills (.agents/skills/), assessment modalities, and optional SessionStart hook
+├── .gemini/          # Maps Gemini CLI context file directly to AGENTS.md
 ├── .tutor/           # Internal persistent memory (profile, session state, 2-layer knowledge graph, roadmaps)
-├── GEMINI.md         # Always-on pedagogical constitution
+├── AGENTS.md         # Universal always-on pedagogical constitution (read natively across AI coding tools)
 ├── README.md         # Quick reference guide
 └── exercises/        # Your hands-on workspace (each /ait-practice creates a dedicated lab folder here)
 ```

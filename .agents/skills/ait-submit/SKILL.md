@@ -16,7 +16,7 @@ Read `.tutor/state.json`, `.tutor/profile.md`, `.tutor/knowledge_map.json`, [ass
 ## Step 1: Validate & Execute Verification
 1. Check `activeExercise` in `.tutor/state.json`. If `null`, inform the learner (in `Response Language`) that there is no active exercise to submit and suggest `/ait-practice`.
 2. If `activeExercise.testCommand` is non-null:
-   - Execute `testCommand` inside `activeExercise.directory` using `run_command`.
+   - Execute `testCommand` inside `activeExercise.directory` in the terminal.
    - Capture pass/fail counts and any error/assertion output.
 3. Read the learner's submitted source files (or `DESIGN.md`) and compare against `README.md` Acceptance Criteria and the modality rules in [assessment-modalities.md](../../references/assessment-modalities.md):
    - **`implementation`:** Check test pass rate + algorithmic/resource constraints + edge-case handling + idiomatic style.
