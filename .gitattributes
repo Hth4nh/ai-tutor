@@ -1,2 +1,2 @@
-# Exclude all files from GitHub Linguist language statistics
-* linguist-vendored
+# Include Markdown rules, skills, and documentation alongside code in GitHub language statistics
+*.md linguist-detectable=true linguist-documentation=false
