@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "hooks": {
+    "sessionStart": [
+      {
+        "command": "node .agents/scripts/session_start.mjs --format=cursor",
+        "timeout": 5
+      }
+    ]
+  }
+}

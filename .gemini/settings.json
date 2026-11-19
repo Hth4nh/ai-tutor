@@ -1,5 +1,19 @@
 {
   "context": {
     "fileName": "AGENTS.md"
+  },
+  "hooks": {
+    "SessionStart": [
+      {
+        "matcher": "*",
+        "hooks": [
+          {
+            "name": "ai-tutor-session-loader",
+            "type": "command",
+            "command": "node .agents/scripts/session_start.mjs --format=hookSpecificOutput"
+          }
+        ]
+      }
+    ]
   }
 }

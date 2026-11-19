@@ -1,0 +1,16 @@
+{
+  "hooks": {
+    "SessionStart": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node .agents/scripts/session_start.mjs --format=hookSpecificOutput",
+            "timeout": 5
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -5,6 +5,10 @@ Thumbs.db
 .idea/
 .gemini/*
 !.gemini/settings.json
+.claude/*
+!.claude/settings.json
+.cursor/*
+!.cursor/hooks.json
 
 # Temporary build, dependency & test artifacts inside exercises/
 **/node_modules/

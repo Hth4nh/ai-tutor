@@ -3,7 +3,7 @@
     "SessionStart": [
       {
         "type": "command",
-        "command": "node ./scripts/session_start.mjs",
+        "command": "node ./scripts/session_start.mjs --format=antigravity",
         "timeout": 5
       }
     ]

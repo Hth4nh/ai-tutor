@@ -6,15 +6,38 @@ It tracks your verified competence across **two layers**—**Core Concepts** (pa
 
 ---
 
-## Quick Start
+## Installation & Quick Start
 
-Open the chat panel and run:
+### 1. Prerequisites
+- Any supported AI coding tool (**Antigravity**, **Claude Code**, **Cursor**, **OpenAI Codex**, **GitHub Copilot**, **Gemini CLI**, **Windsurf**, **Cline**, or **Roo Code**).
+- **Node.js 18+** *(optional — powers automatic `SessionStart` context injection in **Antigravity**, **Claude Code**, **Gemini CLI**, and **Cursor**; other tools fall back automatically via `AGENTS.md`)*.
+- The language runtime or toolchain for whatever subject you choose to practice (e.g., Python, Node.js, JDK, Go, Rust).
+
+### 2. Get the Workspace
+- **Recommended (Track your own progress privately):** Click **Use this template** on GitHub to create a private repository, then clone your copy.
+- **Or clone directly:**
+  ```bash
+  git clone https://github.com/Hth4nh/ai-tutor.git
+  cd ai-tutor
+  ```
+
+### 3. Open in Your AI Tool & Initialize
+- **AI IDEs** *(Antigravity IDE, Cursor, Windsurf, VS Code + Copilot/Cline/Roo)*: Open the `ai-tutor` folder as your workspace.
+- **CLI Agents**: Run your agent directly from the `ai-tutor` directory (`agy`, `claude`, `codex`, or `gemini`).
+
+Then run your first command in chat:
 
 ```text
 /ait-config
 ```
 
 On first run, `/ait-config` launches a short onboarding flow to set your preferred **Response Language**, **Default Coding Language**, prior background, and initial learning goal.
+
+### 4. Typical Learning Flow
+1. **Verify what you already know:** `/ait-check <topic>` — pass a quick top-down diagnostic to record prior mastery.
+2. **Plan a new subject:** `/ait-roadmap <goal>` — generates a tailored path skipping mastered basics.
+3. **Learn & build:** `/ait-learn` -> `/ait-practice` -> `/ait-hint` *(if stuck)* -> `/ait-submit`.
+4. **Retain long-term:** `/ait-review` for spaced repetition and `/ait-status` to inspect your knowledge graph.
 
 ---
 
@@ -40,8 +63,10 @@ All commands are grouped under the `/ait-` prefix (type `/ait` in chat to filter
 
 ```text
 .
-├── .agents/          # Portable Agent Skills (.agents/skills/), assessment modalities, and optional SessionStart hook
-├── .gemini/          # Maps Gemini CLI context file directly to AGENTS.md
+├── .agents/          # Portable Agent Skills (.agents/skills/), assessment modalities, SessionStart script & Antigravity hook
+├── .claude/          # Claude Code SessionStart hook config
+├── .cursor/          # Cursor sessionStart hook config
+├── .gemini/          # Gemini CLI AGENTS.md mapping & SessionStart hook config
 ├── .tutor/           # Internal persistent memory (profile, session state, 2-layer knowledge graph, roadmaps)
 ├── AGENTS.md         # Universal always-on pedagogical constitution (read natively across AI coding tools)
 ├── README.md         # Quick reference guide

@@ -32,6 +32,40 @@ function getLocalISODate() {
   return `${y}-${m}-${d}`;
 }
 
+function drainStdinWithTimeout(timeoutMs = 150) {
+  if (process.stdin.isTTY) return Promise.resolve('');
+  return new Promise((resolve) => {
+    let buf = '';
+    const timer = setTimeout(() => {
+      process.stdin.removeAllListeners();
+      process.stdin.pause();
+      resolve(buf);
+    }, timeoutMs);
+
+    process.stdin.setEncoding('utf8');
+    process.stdin.on('data', (chunk) => {
+      buf += chunk;
+    });
+    process.stdin.on('end', () => {
+      clearTimeout(timer);
+      resolve(buf);
+    });
+    process.stdin.on('error', () => {
+      clearTimeout(timer);
+      resolve(buf);
+    });
+  });
+}
+
+function parseFormatArg(argv) {
+  for (const arg of argv) {
+    if (arg.startsWith('--format=')) {
+      return arg.slice('--format='.length).trim();
+    }
+  }
+  return 'antigravity';
+}
+
 function buildSessionMessage(tutorDir) {
   const state = readJsonSafe(path.join(tutorDir, 'state.json'), { onboarded: false });
   const profileMd = readTextSafe(path.join(tutorDir, 'profile.md'), '');
@@ -89,30 +123,46 @@ function buildSessionMessage(tutorDir) {
   return lines.join('\n');
 }
 
-try {
-  // Drain stdin non-blockingly if provided by the hook runner, then emit SessionStart payload.
-  if (!process.stdin.isTTY) {
-    process.stdin.resume();
-    process.stdin.on('error', () => {});
-  }
-
-  const workspaceRoot = fileURLToPath(new URL('../..', import.meta.url));
-  const tutorDir = path.join(workspaceRoot, '.tutor');
-  const message = buildSessionMessage(tutorDir);
-
-  const output = {
-    injectSteps: [
-      {
-        systemMessage: {
-          systemMessage: message
+function formatPayload(format, message) {
+  switch (format) {
+    case 'hookSpecificOutput':
+      return {
+        hookSpecificOutput: {
+          hookEventName: 'SessionStart',
+          additionalContext: message
         }
-      }
-    ]
-  };
-
-  process.stdout.write(JSON.stringify(output));
-  process.exit(0);
-} catch {
-  process.stdout.write('{}');
-  process.exit(0);
+      };
+    case 'cursor':
+      return {
+        additional_context: message
+      };
+    case 'antigravity':
+    default:
+      return {
+        injectSteps: [
+          {
+            systemMessage: {
+              systemMessage: message
+            }
+          }
+        ]
+      };
+  }
 }
+
+async function main() {
+  try {
+    await drainStdinWithTimeout();
+    const format = parseFormatArg(process.argv.slice(2));
+    const workspaceRoot = fileURLToPath(new URL('../..', import.meta.url));
+    const tutorDir = path.join(workspaceRoot, '.tutor');
+    const message = buildSessionMessage(tutorDir);
+    process.stdout.write(JSON.stringify(formatPayload(format, message)));
+    process.exit(0);
+  } catch {
+    process.stdout.write('{}');
+    process.exit(0);
+  }
+}
+
+main();
