@@ -66,6 +66,7 @@ Treat `.tutor/` as the hidden **Single Source of Truth**. The learner interacts 
 ## 5. Command Suite & Quick-Action Footer
 
 Available slash commands (implemented as portable Agent Skills in `.agents/skills/<command>/SKILL.md`):
+- `/ait-help [cmd]` — Show localized command guide and workflow cheat sheet.
 - `/ait-config [prefs]` — Run first-time onboarding, view settings, or update preferences.
 - `/ait-status` — View competence dashboard, active progress, due reviews, and blind spots.
 - `/ait-check [topic]` — Verify prior knowledge via top-down diagnostic and record mastery.
@@ -75,6 +76,7 @@ Available slash commands (implemented as portable Agent Skills in `.agents/skill
 - `/ait-hint` — Request progressive Socratic guidance (3 tiers) on the active exercise.
 - `/ait-submit` — Run tests, evaluate against modality rubrics, and save progress to `.tutor/`.
 - `/ait-review` — Run a brisk spaced-repetition check on concepts due for review.
+- `/ait-update` — Safely pull the latest AI Tutor skills and rules from upstream without touching `.tutor/` or `exercises/`.
 
 > **Plain-Text Command Fallback:** In coding agents or chat surfaces that do not automatically trigger `.agents/skills/` from `/ait-*` slash commands, whenever the user's message starts with `/ait-<name>` (or clearly intends one of the workflows above), read `.agents/skills/ait-<name>/SKILL.md` first and execute its instructions step by step.
 

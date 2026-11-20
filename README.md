@@ -38,6 +38,7 @@ On first run, `/ait-config` launches a short onboarding flow to set your preferr
 2. **Plan a new subject:** `/ait-roadmap <goal>` — generates a tailored path skipping mastered basics.
 3. **Learn & build:** `/ait-learn` -> `/ait-practice` -> `/ait-hint` *(if stuck)* -> `/ait-submit`.
 4. **Retain long-term:** `/ait-review` for spaced repetition and `/ait-status` to inspect your knowledge graph.
+5. **Stay up to date:** `/ait-update` — pulls the latest upstream skills and rules even in template-created repositories, without touching `.tutor/` or `exercises/`.
 
 ---
 
@@ -47,6 +48,7 @@ All commands are grouped under the `/ait-` prefix (type `/ait` in chat to filter
 
 | Command | Usage | Description |
 | :--- | :--- | :--- |
+| **`/ait-help`** | `/ait-help [command]` | Display a localized cheat sheet of all tutor commands and workflows (or detailed examples for a specific command). |
 | **`/ait-config`** | `/ait-config [preferences]` | Run first-time onboarding, view active settings, or update preferences (e.g., `/ait-config language <lang>`, `/ait-config coding-lang TypeScript`). |
 | **`/ait-status`** | `/ait-status` | View your 2-layer competence dashboard, active roadmap/exercise state, due reviews, and recurring blind spots. |
 | **`/ait-check`** | `/ait-check [topic]` | **Verify prior knowledge:** Takes a top-down diagnostic challenge; records verified mastery to memory so you skip redundant lessons. |
@@ -56,6 +58,7 @@ All commands are grouped under the `/ait-` prefix (type `/ait` in chat to filter
 | **`/ait-hint`** | `/ait-hint` | Get progressive 3-tier Socratic guidance on your active exercise without spoiling the solution. |
 | **`/ait-submit`** | `/ait-submit` | Execute automated tests, review complexity/design/trade-offs, and immediately persist results to your knowledge graph. |
 | **`/ait-review`** | `/ait-review` | Run a 2–3 minute spaced-repetition check on concepts due for review. |
+| **`/ait-update`** | `/ait-update` | Safely sync the latest core skills and rules from upstream without modifying your personal `.tutor/` or `exercises/` data. |
 
 ---
 
