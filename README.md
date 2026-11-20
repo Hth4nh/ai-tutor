@@ -31,7 +31,7 @@ Then run your first command in chat:
 /ait-config
 ```
 
-On first run, `/ait-config` launches a short onboarding flow to set your preferred **Response Language**, **Default Coding Language**, prior background, and initial learning goal.
+On first run, `/ait-config` launches a short onboarding flow to set your preferred **Response Language**, **Default Coding Language**, prior background, and initial learning goal. Run `/ait-help` anytime afterward for an interactive command guide in your configured language.
 
 ### 4. Typical Learning Flow
 1. **Verify what you already know:** `/ait-check <topic>` — pass a quick top-down diagnostic to record prior mastery.
